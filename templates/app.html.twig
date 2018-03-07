@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  {{ app | raw }}
+    {%- if initial_state is defined -%}
+    <script type="text/javascript">
+        window.__INITIAL_STATE__ = {{ initial_state|json_encode|raw }};
+    </script>
+    {%- endif -%}
+    {{ app | raw }}
 {% endblock %}
 
 {% block javascripts %}
-  <script src="{{ asset('build/js/client.js') }}"></script>
+    <script src="{{ asset('build/js/client.js') }}"></script>
 {% endblock %}

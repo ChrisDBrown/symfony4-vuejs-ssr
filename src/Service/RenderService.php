@@ -19,7 +19,7 @@ class RenderService
     $this->jsRoot = sprintf('%s/../public/build/js', $rootDirectory);
   }
 
-  public function render(): string
+  public function render($path): string
   {
     $vueRenderer = file_get_contents(sprintf('%s/vue-server-renderer/basic.js', $this->nodeRoot));
     $entryPoint = file_get_contents(sprintf('%s/server.js', $this->jsRoot));
@@ -31,6 +31,7 @@ class RenderService
 <<<EOT
 var process = { env: { VUE_ENV: "server", NODE_ENV: "production" } }; 
 this.global = { process: process };
+let url = "$path";
 EOT;
     
     $v8->executeString($js);
