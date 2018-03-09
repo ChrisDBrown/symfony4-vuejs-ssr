@@ -1,13 +1,22 @@
 import App from './components/App.vue';
 import Vue from 'vue';
-import { createStore } from './store';
+import router from './router'
+import store from './store';
 
-export function createApp() {
-  const store = createStore();
-  const app = new Vue({
-    render: h => h(App),
-    store
-  });
+Vue.mixin({
+    beforeMount() {
+        const {asyncData} = this.$options;
+        if (asyncData) {
+            this.dataPromise = asyncData({
+                store: this.$store,
+                route: this.$route
+            })
+        }
+    }
+});
 
-  return { app, store }
-}
+export default new Vue({
+    router,
+    store,
+    render: h => h(App)
+});

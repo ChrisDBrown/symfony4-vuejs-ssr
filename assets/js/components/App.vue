@@ -1,19 +1,18 @@
 <template>
-  <div id="app">
-    {{ number }}
-    <button v-on:click="fetchNumber">Fetch number</button>
-  </div>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <router-view/>
+        <router-link :to="{ name: 'home' }">Home</router-link>
+        <router-link :to="{ name: 'fetch-number' }">Fetch Number</router-link>
+    </div>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-
-  export default {
-    computed: {
-      ...mapGetters(['number'])
-    },
-    methods: {
-      ...mapActions(['fetchNumber'])
+    export default {
+        data() {
+            return {
+                title: 'Welcome To My Site'
+            }
+        }
     }
-  }
 </script>

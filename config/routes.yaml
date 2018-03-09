@@ -2,6 +2,10 @@ home:
   path: /
   defaults: { _controller: 'App\Controller\AppController::index' }
 
-number:
+fetch_number:
+  path: /fetch-number
+  defaults: { _controller: 'App\Controller\AppController::fetchNumber' }
+
+api_number:
   path: /number
-  defaults: { _controller: 'App\Controller\AppController::number' }
+  defaults: { _controller: 'App\Controller\ApiController::number' }

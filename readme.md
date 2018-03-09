@@ -14,7 +14,7 @@ Until recently server-side rendering in VueJS wasn't possible outside Node.js en
 
 1) `composer install` to get PHP dependencies
 2) `yarn install` to get JS dependencies
-3) `yarn run encore dev` to build JS files (or `yarn run encore dev --watch` for interactive watch)
+3) `yarn run dev` to build JS files (or `yarn run watch` for interactive watch)
 4) `php bin/console server:run` to start a PHP server on `127.0.0.1:8000`
 
 ## Explanation
