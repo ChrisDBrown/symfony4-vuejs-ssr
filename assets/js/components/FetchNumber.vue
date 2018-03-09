@@ -9,6 +9,11 @@
     import {mapActions, mapGetters} from 'vuex';
 
     export default {
+        asyncData({store, route}) {
+            if (!window.__INITIAL_STATE__) {
+                store.dispatch('fetchNumber');
+            }
+        },
         name: "index",
         computed: {
             ...mapGetters(['number'])

@@ -4,16 +4,17 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
+const state = {
+    number: null
+};
+
 export default new Vuex.Store({
+    state,
     actions: {
         fetchNumber({commit}) {
-            if (typeof window === 'undefined') {
-                commit('setNumber', 1234567890);
-            } else {
-                axios.get('/number').then(number => {
-                    commit('setNumber', number.data.number);
-                });
-            }
+            axios.get('/number').then(number => {
+                commit('setNumber', number.data.number);
+            });
         }
     },
     mutations: {
