@@ -30,3 +30,6 @@ In broad strokes this works by:
 The biggest outstanding issue with this is that the server isn't calling the `/number` endpoint to pre-fetch data, but hardcoding a starting value instead. This could definitely be improved by creating a generic API layer that can do both browser and server based calls with the same function.
 
 The other issue is that this setup is tricky to develop with - the `php-v8js` module doesn't deal with parsing errors very well, and I often found myself having to manually kill browser tabs to stop them running up 100% CPU usage when something went wrong. Hopefully this'll improve over time as it matures.
+
+
+After having had to solve this problem in a high-throughput production environment my recommendation would be to use a serverless SSR service (or standalone node server) and ESI to include it into your PHP application. While this brings other complications, it's a far more robust setup.
